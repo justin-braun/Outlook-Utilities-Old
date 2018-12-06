@@ -116,16 +116,24 @@ namespace MailMoveSearchOutlook
         private void buttonMove_Click(object sender, EventArgs e)
         {
             // Move selected item to selected folder
-            //Outlook.Items items = Globals.ThisAddIn.Application.ActiveExplorer().Selection as Outlook.Items;
-            Outlook.MailItem mail = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1];
+            Outlook.Selection items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
 
-            try
+            //MessageBox.Show("Moving " + items.Count.ToString() + " items");
+            foreach(var item in items)
             {
-                mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                if(item is Outlook.MailItem)
+                {
+                    Outlook.MailItem mail = (Outlook.MailItem)item;
+
+                    try
+                    {
+                        mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
 
             this.Close();
