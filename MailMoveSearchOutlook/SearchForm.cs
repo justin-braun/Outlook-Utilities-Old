@@ -53,23 +53,26 @@ namespace MailMoveSearchOutlook
         {
             Outlook.Folders childFolders = folder.Folders;
 
-
-
             if (childFolders.Count == 0)
             {
-                string[] ffp = folder.FolderPath.Split('\\');
-                
-
-                // Write the folder path.
+                // Write the folder path object.
                 OutlookFolders.Add(new OutlookFolder {
                     FolderName = folder.Name,
                     FullFolderPath = folder.FolderPath,
                     FolderPath = Regex.Replace(folder.FolderPath, @"\\\\(.*?)\\","\\").Replace(@"\", @"/"),
                     FolderId = folder.EntryID });
-                //listAllFolders.Items.Add(folder.Name + ' ' + folder.FolderPath);
             }
             else
             {
+                // Write the folder path object.
+                OutlookFolders.Add(new OutlookFolder
+                {
+                    FolderName = folder.Name,
+                    FullFolderPath = folder.FolderPath,
+                    FolderPath = Regex.Replace(folder.FolderPath, @"\\\\(.*?)\\", "\\").Replace(@"\", @"/"),
+                    FolderId = folder.EntryID
+                });
+
                 foreach (Outlook.Folder childFolder in childFolders)
                 {
                     EnumerateFolders(childFolder);
@@ -116,12 +119,6 @@ namespace MailMoveSearchOutlook
             //Outlook.Items items = Globals.ThisAddIn.Application.ActiveExplorer().Selection as Outlook.Items;
             Outlook.MailItem mail = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1];
 
-            // Get destination folder
-
-            //Globals.ThisAddIn.Application.ActiveExplorer().CurrentFolder = Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId);
-            //    Outlook.MAPIFolder destFolder = Globals.ThisAddIn.Application.ActiveExplorer().CurrentFolder;
-
-            //MessageBox.Show("moving message to " + ((OutlookFolder)listResults.SelectedItem).FolderPath);
             try
             {
                 mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
@@ -133,22 +130,6 @@ namespace MailMoveSearchOutlook
 
             this.Close();
 
-
-            //if(items.Count > 0)
-            //{ 
-            //foreach (var mail in items)
-            //{
-            //    try
-            //    {
-            //        //mail.Move(destFolder);
-            //        MessageBox.Show("moving message to " + ((OutlookFolder)listResults.SelectedItem).FolderPath);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-            //}
         }
 
         private void label1_Click(object sender, EventArgs e)
