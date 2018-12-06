@@ -52,13 +52,15 @@
             // group1
             // 
             this.group1.Items.Add(this.buttonMoveMessage);
+            this.group1.Label = "Utilities";
             this.group1.Name = "group1";
             // 
             // buttonMoveMessage
             // 
             this.buttonMoveMessage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.buttonMoveMessage.Label = "Move to Folder";
+            this.buttonMoveMessage.Label = "Search && Move";
             this.buttonMoveMessage.Name = "buttonMoveMessage";
+            this.buttonMoveMessage.OfficeImageId = "ResearchPane";
             this.buttonMoveMessage.ShowImage = true;
             this.buttonMoveMessage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveMessage_Click);
             // 

@@ -32,6 +32,9 @@ namespace MailMoveSearchOutlook
             //Refresh folder list
             GetFolderList();
 
+            // Textbox Focus
+            textSearch.Focus();
+
             // Selections
             // Highlighted item
             //var items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
@@ -89,6 +92,22 @@ namespace MailMoveSearchOutlook
         {
             listResults.Items.Clear();
             FindFolder(textSearch.Text);
+
+            if(listResults.Items.Count > 0)
+            {
+                listResults.SelectedIndex = 0;
+                buttonMove.Enabled = true;
+            }
+            else
+            {
+                buttonMove.Enabled = false;
+            }
+
+            if(textSearch.Text == "")
+            {
+                listResults.Items.Clear();
+                buttonMove.Enabled = false;
+            }
         }
 
         private void buttonMove_Click(object sender, EventArgs e)
@@ -102,8 +121,18 @@ namespace MailMoveSearchOutlook
             //Globals.ThisAddIn.Application.ActiveExplorer().CurrentFolder = Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId);
             //    Outlook.MAPIFolder destFolder = Globals.ThisAddIn.Application.ActiveExplorer().CurrentFolder;
 
-            MessageBox.Show("moving message to " + ((OutlookFolder)listResults.SelectedItem).FolderPath);
-            mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
+            //MessageBox.Show("moving message to " + ((OutlookFolder)listResults.SelectedItem).FolderPath);
+            try
+            {
+                mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            this.Close();
+
 
             //if(items.Count > 0)
             //{ 
@@ -120,6 +149,16 @@ namespace MailMoveSearchOutlook
             //    }
             //}
             //}
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
