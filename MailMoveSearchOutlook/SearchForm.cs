@@ -16,7 +16,7 @@ namespace MailMoveSearchOutlook
 
     public partial class SearchForm : Form
     {
-        List<OutlookFolder> OutlookFolders = new List<OutlookFolder>();
+        List<OutlookMailFolder> OutlookFolders = new List<OutlookMailFolder>();
 
         public SearchForm()
         {
@@ -25,38 +25,51 @@ namespace MailMoveSearchOutlook
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
+            textSearch.BringToFront();
+            listResults.BringToFront();
+
             // Listbox Properties
             listResults.DisplayMember = "FolderPath";
             listResults.ValueMember = "FolderId";
 
+            // Refresh Folder List
+            RefreshFolderList();
+
+        }
+
+        public void RefreshFolderList()
+        {
             //Refresh folder list
             GetFolderList();
 
             // Textbox Focus
             textSearch.Focus();
-
-            // Selections
-            // Highlighted item
-            //var items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
-            //MessageBox.Show(items.Count.ToString() + " messages selected.");
-
         }
 
-        public void GetFolderList()
+        private void GetFolderList()
         {
+            // Clear folder array
+            if (OutlookFolders != null)
+                OutlookFolders.Clear();
+
+            // Get folders in the default store
             Outlook.Folder root = Globals.ThisAddIn.Application.Session.
                 DefaultStore.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox) as Outlook.Folder;
+
+            //Enumerate and add to array
             EnumerateFolders(root);
         }
 
-        public void EnumerateFolders(Outlook.Folder folder)
+        private void EnumerateFolders(Outlook.Folder folder)
         {
+            // Get folders in the default store
             Outlook.Folders childFolders = folder.Folders;
 
             if (childFolders.Count == 0)
             {
                 // Write the folder path object.
-                OutlookFolders.Add(new OutlookFolder {
+                OutlookFolders.Add(new OutlookMailFolder
+                {
                     FolderName = folder.Name,
                     FullFolderPath = folder.FolderPath,
                     FolderPath = Regex.Replace(folder.FolderPath, @"\\\\(.*?)\\","\\").Replace(@"\", @"/"),
@@ -65,7 +78,7 @@ namespace MailMoveSearchOutlook
             else
             {
                 // Write the folder path object.
-                OutlookFolders.Add(new OutlookFolder
+                OutlookFolders.Add(new OutlookMailFolder
                 {
                     FolderName = folder.Name,
                     FullFolderPath = folder.FolderPath,
@@ -80,40 +93,43 @@ namespace MailMoveSearchOutlook
             }
         }
 
-        public void FindFolder(string searchString)
+        private void FindFolder(string searchString)
         {
-            foreach(OutlookFolder folder in OutlookFolders)
+            listResults.Items.Clear();
+
+            foreach (OutlookMailFolder folder in OutlookFolders)
             {
                 if(folder.FolderName.ToLower().Contains(searchString.ToLower()))
                 {
                     listResults.Items.Add(folder);
                 }
             }
+
+            if (listResults.Items.Count > 0)
+            {
+                listResults.SelectedIndex = 0;
+                buttonOK.Enabled = true;
+            }
+            else
+            {
+                buttonOK.Enabled = false;
+            }
+
+            if (textSearch.Text == "")
+            {
+                listResults.Items.Clear();
+                buttonOK.Enabled = false;
+            }
         }
 
         private void textSearch_TextChanged(object sender, EventArgs e)
         {
-            listResults.Items.Clear();
+            // Search for folder
             FindFolder(textSearch.Text);
 
-            if(listResults.Items.Count > 0)
-            {
-                listResults.SelectedIndex = 0;
-                buttonMove.Enabled = true;
-            }
-            else
-            {
-                buttonMove.Enabled = false;
-            }
-
-            if(textSearch.Text == "")
-            {
-                listResults.Items.Clear();
-                buttonMove.Enabled = false;
-            }
         }
 
-        private void buttonMove_Click(object sender, EventArgs e)
+        private void buttonOK_Click(object sender, EventArgs e)
         {
             // Move selected item to selected folder
             Outlook.Selection items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
@@ -127,7 +143,7 @@ namespace MailMoveSearchOutlook
 
                     try
                     {
-                        mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookFolder)listResults.SelectedItem).FolderId));
+                        mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
                     }
                     catch (Exception ex)
                     {
@@ -140,22 +156,25 @@ namespace MailMoveSearchOutlook
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
-
+            // Close the form
+            this.Close();
         }
 
-        private void listResults_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonNewFolder_Click(object sender, EventArgs e)
         {
+            // Create a new folder
+            Outlook.MAPIFolder newFolder = Globals.ThisAddIn.Application.Session.PickFolder();
+            if (newFolder != null)
+                textSearch.Text = newFolder.Name;
 
+            // Refresh Folder List
+            RefreshFolderList();
+
+            // Assume Re-Search for search term
+            listResults.Items.Clear();
+            FindFolder(textSearch.Text);
         }
-    }
-
-    public class OutlookFolder
-    {
-        public string FolderName { get; set; }
-        public string FullFolderPath { get; set; }
-        public string FolderPath { get; set; }
-        public string FolderId { get; set; }
     }
 }
