@@ -72,8 +72,9 @@ namespace MailMoveSearchOutlook
                 {
                     FolderName = folder.Name,
                     FullFolderPath = folder.FolderPath,
-                    FolderPath = Regex.Replace(folder.FolderPath, @"\\\\(.*?)\\","\\").Replace(@"\", @"/"),
-                    FolderId = folder.EntryID });
+                    FolderPath = Regex.Replace(folder.FolderPath, @"\\\\(.*?)\\", "\\").Replace(@"\", @"/"),
+                    FolderId = folder.EntryID
+                });
             }
             else
             {
@@ -99,7 +100,7 @@ namespace MailMoveSearchOutlook
 
             foreach (OutlookMailFolder folder in OutlookFolders)
             {
-                if(folder.FolderName.ToLower().Contains(searchString.ToLower()))
+                if (folder.FolderName.ToLower().Contains(searchString.ToLower()))
                 {
                     listResults.Items.Add(folder);
                 }
@@ -131,19 +132,45 @@ namespace MailMoveSearchOutlook
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            // Move selected item to selected folder
-            Outlook.Selection items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
+            //// Move selected item to selected folder
+            //Outlook.Selection items = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
 
-            //MessageBox.Show("Moving " + items.Count.ToString() + " items");
-            foreach(var item in items)
+            ////MessageBox.Show("Moving " + items.Count.ToString() + " items");
+            //foreach (var item in items)
+            //{
+            //    if (item is Outlook.MailItem)
+            //    {
+            //        Outlook.MailItem mail = (Outlook.MailItem)item;
+
+            //        try
+            //        {
+            //            mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //}
+
+            bool isMessage = false;
+
+            // Check for mail thread
+            Outlook.Selection sel = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
+            Outlook.Selection conv = sel.GetSelection(Outlook.OlSelectionContents.olConversationHeaders) as Outlook.Selection;
+
+
+            // Move if it is an individual message selected
+            foreach (var item in sel)
             {
-                if(item is Outlook.MailItem)
+                if (item is Outlook.MailItem)
                 {
                     Outlook.MailItem mail = (Outlook.MailItem)item;
 
                     try
                     {
                         mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
+                        isMessage = true;
                     }
                     catch (Exception ex)
                     {
@@ -152,6 +179,35 @@ namespace MailMoveSearchOutlook
                 }
             }
 
+            // Move if it is whole conversation thread selected
+            if (isMessage == false)
+            {
+                foreach (Outlook.ConversationHeader cHeader in conv)
+                {
+                    Outlook.SimpleItems items = cHeader.GetItems();
+                    //MessageBox.Show(items.Count.ToString());
+
+                    for (int i = 1; i <= items.Count; i++)
+                    {
+                        if (items[i] is Outlook.MailItem)
+                        {
+                            Outlook.MailItem mail = items[i] as Outlook.MailItem;
+
+                            try
+                            {
+                                mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
+                                isMessage = false;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Close form           
             this.Close();
 
         }
@@ -176,5 +232,12 @@ namespace MailMoveSearchOutlook
             listResults.Items.Clear();
             FindFolder(textSearch.Text);
         }
+
+        private void EnumerateConversation(object item, Outlook.Conversation conversation)
+        {
+
+        }
+
     }
+
 }
