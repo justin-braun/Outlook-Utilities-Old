@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 
-namespace MailMoveSearchOutlook
+namespace WCOutlookUtilities
 {
     public partial class ThisAddIn
     {
@@ -32,7 +32,7 @@ namespace MailMoveSearchOutlook
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
-        
+
         #endregion
     }
 }

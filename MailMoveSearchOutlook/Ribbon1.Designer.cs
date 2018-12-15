@@ -1,4 +1,4 @@
-﻿namespace MailMoveSearchOutlook
+﻿namespace WCOutlookUtilities
 {
     partial class Ribbon1 : Microsoft.Office.Tools.Ribbon.RibbonBase
     {

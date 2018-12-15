@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Office.Tools.Ribbon;
 
-namespace MailMoveSearchOutlook
+namespace WCOutlookUtilities
 {
     public partial class Ribbon1
     {
