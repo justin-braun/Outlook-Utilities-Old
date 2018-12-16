@@ -44,6 +44,9 @@ namespace WCOutlookUtilities.EmptyFolderFinder
         private void buttonFind_Click(object sender, EventArgs e)
         {
             Find();
+
+            if (listFolders.Items.Count == 0)
+                MessageBox.Show("There were no empty folders found in your mailbox.", "Empty Folder Finder");
         }
 
         void Find()
