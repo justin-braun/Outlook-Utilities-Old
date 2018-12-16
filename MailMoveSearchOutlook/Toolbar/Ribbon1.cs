@@ -24,5 +24,11 @@ namespace WCOutlookUtilities
             EmptyFolderFinder.effMain eff = new EmptyFolderFinder.effMain();
             eff.ShowDialog();
         }
+
+        private void buttonSearchMain_Click(object sender, RibbonControlEventArgs e)
+        {
+            SearchForm sf = new SearchForm();
+            sf.ShowDialog();
+        }
     }
 }

@@ -40,6 +40,7 @@
             this.group2 = this.Factory.CreateRibbonGroup();
             this.buttonMoveMessage = this.Factory.CreateRibbonButton();
             this.buttonFinder = this.Factory.CreateRibbonButton();
+            this.buttonSearchMain = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.tab2.SuspendLayout();
@@ -69,6 +70,7 @@
             // group2
             // 
             this.group2.Items.Add(this.buttonFinder);
+            this.group2.Items.Add(this.buttonSearchMain);
             this.group2.Name = "group2";
             // 
             // buttonMoveMessage
@@ -88,6 +90,15 @@
             this.buttonFinder.OfficeImageId = "FileFind";
             this.buttonFinder.ShowImage = true;
             this.buttonFinder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonFinder_Click);
+            // 
+            // buttonSearchMain
+            // 
+            this.buttonSearchMain.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonSearchMain.Label = "Search && Move";
+            this.buttonSearchMain.Name = "buttonSearchMain";
+            this.buttonSearchMain.OfficeImageId = "ResearchPane";
+            this.buttonSearchMain.ShowImage = true;
+            this.buttonSearchMain.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonSearchMain_Click);
             // 
             // Ribbon1
             // 
@@ -116,6 +127,7 @@
         private Microsoft.Office.Tools.Ribbon.RibbonTab tab2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonFinder;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSearchMain;
     }
 
     partial class ThisRibbonCollection
