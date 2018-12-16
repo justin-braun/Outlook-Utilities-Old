@@ -19,6 +19,10 @@ namespace WCOutlookUtilities
             sf.ShowDialog();
         }
 
-
+        private void buttonFinder_Click(object sender, RibbonControlEventArgs e)
+        {
+            EmptyFolderFinder.effMain eff = new EmptyFolderFinder.effMain();
+            eff.ShowDialog();
+        }
     }
 }

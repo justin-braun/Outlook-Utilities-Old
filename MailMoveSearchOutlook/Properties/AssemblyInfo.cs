@@ -6,13 +6,13 @@ using System.Security;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WCOutlookUtilities")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Weekend Coder Outlook Utilities")]
+[assembly: AssemblyDescription("Weekend Coder Outlook Utilities")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WCOutlookUtilities")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Weekend Coder")]
+[assembly: AssemblyProduct("Weekend Coder Outlook Utilities")]
+[assembly: AssemblyCopyright("Copyright © 2018 Weekend Coder.  All rights reserved.")]
+[assembly: AssemblyTrademark("Copyright © 2018 Weekend Coder.  All rights reserved.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
