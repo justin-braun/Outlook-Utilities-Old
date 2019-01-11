@@ -30,5 +30,11 @@ namespace WCOutlookUtilities
             SearchForm sf = new SearchForm();
             sf.ShowDialog();
         }
+
+        private void buttonGoToFolder_Click(object sender, RibbonControlEventArgs e)
+        {
+            GoToFolder.GoToFolderForm form = new GoToFolder.GoToFolderForm();
+            form.ShowDialog();
+        }
     }
 }

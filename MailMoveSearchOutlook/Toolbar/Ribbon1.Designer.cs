@@ -36,9 +36,10 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.buttonMoveMessage = this.Factory.CreateRibbonButton();
+            this.buttonGoToFolder = this.Factory.CreateRibbonButton();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group2 = this.Factory.CreateRibbonGroup();
-            this.buttonMoveMessage = this.Factory.CreateRibbonButton();
             this.buttonFinder = this.Factory.CreateRibbonButton();
             this.buttonSearchMain = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
@@ -58,8 +59,27 @@
             // group1
             // 
             this.group1.Items.Add(this.buttonMoveMessage);
-            this.group1.Label = "Utilities";
+            this.group1.Items.Add(this.buttonGoToFolder);
+            this.group1.Label = "WC Utilities";
             this.group1.Name = "group1";
+            // 
+            // buttonMoveMessage
+            // 
+            this.buttonMoveMessage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonMoveMessage.Label = "Search && Move";
+            this.buttonMoveMessage.Name = "buttonMoveMessage";
+            this.buttonMoveMessage.OfficeImageId = "ResearchPane";
+            this.buttonMoveMessage.ShowImage = true;
+            this.buttonMoveMessage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveMessage_Click);
+            // 
+            // buttonGoToFolder
+            // 
+            this.buttonGoToFolder.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonGoToFolder.Label = "Go to Folder";
+            this.buttonGoToFolder.Name = "buttonGoToFolder";
+            this.buttonGoToFolder.OfficeImageId = "FileFind";
+            this.buttonGoToFolder.ShowImage = true;
+            this.buttonGoToFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonGoToFolder_Click);
             // 
             // tab2
             // 
@@ -72,15 +92,6 @@
             this.group2.Items.Add(this.buttonFinder);
             this.group2.Items.Add(this.buttonSearchMain);
             this.group2.Name = "group2";
-            // 
-            // buttonMoveMessage
-            // 
-            this.buttonMoveMessage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.buttonMoveMessage.Label = "Search && Move";
-            this.buttonMoveMessage.Name = "buttonMoveMessage";
-            this.buttonMoveMessage.OfficeImageId = "ResearchPane";
-            this.buttonMoveMessage.ShowImage = true;
-            this.buttonMoveMessage.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMoveMessage_Click);
             // 
             // buttonFinder
             // 
@@ -128,6 +139,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonFinder;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSearchMain;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonGoToFolder;
     }
 
     partial class ThisRibbonCollection
