@@ -1,13 +1,13 @@
 ﻿namespace WCOutlookUtilities
 {
-    partial class Ribbon1 : Microsoft.Office.Tools.Ribbon.RibbonBase
+    partial class OutlookRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public Ribbon1()
+        public OutlookRibbon()
             : base(Globals.Factory.GetRibbonFactory())
         {
             InitializeComponent();
@@ -36,12 +36,14 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.buttonMoveMessage = this.Factory.CreateRibbonButton();
-            this.buttonGoToFolder = this.Factory.CreateRibbonButton();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group2 = this.Factory.CreateRibbonGroup();
+            this.buttonMoveMessage = this.Factory.CreateRibbonButton();
+            this.buttonGoToFolder = this.Factory.CreateRibbonButton();
             this.buttonFinder = this.Factory.CreateRibbonButton();
             this.buttonSearchMain = this.Factory.CreateRibbonButton();
+            this.buttonTabGoToFolder = this.Factory.CreateRibbonButton();
+            this.buttonAbout = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.tab2.SuspendLayout();
@@ -63,6 +65,20 @@
             this.group1.Label = "WC Utilities";
             this.group1.Name = "group1";
             // 
+            // tab2
+            // 
+            this.tab2.Groups.Add(this.group2);
+            this.tab2.Label = "WC Utilities";
+            this.tab2.Name = "tab2";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.buttonFinder);
+            this.group2.Items.Add(this.buttonSearchMain);
+            this.group2.Items.Add(this.buttonTabGoToFolder);
+            this.group2.Items.Add(this.buttonAbout);
+            this.group2.Name = "group2";
+            // 
             // buttonMoveMessage
             // 
             this.buttonMoveMessage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -80,18 +96,6 @@
             this.buttonGoToFolder.OfficeImageId = "FileFind";
             this.buttonGoToFolder.ShowImage = true;
             this.buttonGoToFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonGoToFolder_Click);
-            // 
-            // tab2
-            // 
-            this.tab2.Groups.Add(this.group2);
-            this.tab2.Label = "WC Utilities";
-            this.tab2.Name = "tab2";
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.buttonFinder);
-            this.group2.Items.Add(this.buttonSearchMain);
-            this.group2.Name = "group2";
             // 
             // buttonFinder
             // 
@@ -111,9 +115,27 @@
             this.buttonSearchMain.ShowImage = true;
             this.buttonSearchMain.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonSearchMain_Click);
             // 
-            // Ribbon1
+            // buttonTabGoToFolder
             // 
-            this.Name = "Ribbon1";
+            this.buttonTabGoToFolder.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonTabGoToFolder.Label = "Go to Folder";
+            this.buttonTabGoToFolder.Name = "buttonTabGoToFolder";
+            this.buttonTabGoToFolder.OfficeImageId = "FileFind";
+            this.buttonTabGoToFolder.ShowImage = true;
+            this.buttonTabGoToFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonTabGoToFolder_Click);
+            // 
+            // buttonAbout
+            // 
+            this.buttonAbout.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonAbout.Label = "About";
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.OfficeImageId = "ContextHelp";
+            this.buttonAbout.ShowImage = true;
+            this.buttonAbout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAbout_Click);
+            // 
+            // OutlookRibbon
+            // 
+            this.Name = "OutlookRibbon";
             this.RibbonType = "Microsoft.Outlook.Explorer";
             this.Tabs.Add(this.tab1);
             this.Tabs.Add(this.tab2);
@@ -140,13 +162,15 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonFinder;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSearchMain;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonGoToFolder;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonTabGoToFolder;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonAbout;
     }
 
     partial class ThisRibbonCollection
     {
-        internal Ribbon1 Ribbon1
+        internal OutlookRibbon OutlookRibbon
         {
-            get { return this.GetRibbon<Ribbon1>(); }
+            get { return this.GetRibbon<OutlookRibbon>(); }
         }
     }
 }

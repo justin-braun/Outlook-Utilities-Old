@@ -183,6 +183,12 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="About\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmptyFolderFinder\effMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="About\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmptyFolderFinder\effMain.resx">
       <DependentUpon>effMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,8 +224,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Toolbar\Ribbon1.resx">
-      <DependentUpon>Ribbon1.cs</DependentUpon>
+    <EmbeddedResource Include="Toolbar\OutlookRibbon.resx">
+      <DependentUpon>OutlookRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchAndMove\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
@@ -230,11 +239,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Toolbar\Ribbon1.cs">
+    <Compile Include="Toolbar\OutlookRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Toolbar\Ribbon1.Designer.cs">
-      <DependentUpon>Ribbon1.cs</DependentUpon>
+    <Compile Include="Toolbar\OutlookRibbon.Designer.cs">
+      <DependentUpon>OutlookRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchAndMove\SearchForm.cs">
       <SubType>Form</SubType>
@@ -277,7 +286,7 @@
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
-        <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\15.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{A58A78EB-1C92-4DDD-80CF-E8BD872ABFC4}" />
+        <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{A58A78EB-1C92-4DDD-80CF-E8BD872ABFC4}" />
         <Host Name="Outlook" GeneratedCodeNamespace="WCOutlookUtilities" IconIndex="0">
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>

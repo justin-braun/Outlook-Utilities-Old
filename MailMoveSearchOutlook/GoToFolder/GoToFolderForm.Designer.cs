@@ -54,7 +54,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 13);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Move the selected items to:";
+            this.label2.Text = "Go to the selected folder:";
             // 
             // label1
             // 
@@ -96,6 +96,7 @@
             // 
             // GoToFolderForm
             // 
+            this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 236);
