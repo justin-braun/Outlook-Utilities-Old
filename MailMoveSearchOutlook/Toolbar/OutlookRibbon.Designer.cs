@@ -36,10 +36,10 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.tab2 = this.Factory.CreateRibbonTab();
-            this.group2 = this.Factory.CreateRibbonGroup();
             this.buttonMoveMessage = this.Factory.CreateRibbonButton();
             this.buttonGoToFolder = this.Factory.CreateRibbonButton();
+            this.tab2 = this.Factory.CreateRibbonTab();
+            this.group2 = this.Factory.CreateRibbonGroup();
             this.buttonFinder = this.Factory.CreateRibbonButton();
             this.buttonSearchMain = this.Factory.CreateRibbonButton();
             this.buttonTabGoToFolder = this.Factory.CreateRibbonButton();
@@ -65,20 +65,6 @@
             this.group1.Label = "WC Utilities";
             this.group1.Name = "group1";
             // 
-            // tab2
-            // 
-            this.tab2.Groups.Add(this.group2);
-            this.tab2.Label = "WC Utilities";
-            this.tab2.Name = "tab2";
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.buttonFinder);
-            this.group2.Items.Add(this.buttonSearchMain);
-            this.group2.Items.Add(this.buttonTabGoToFolder);
-            this.group2.Items.Add(this.buttonAbout);
-            this.group2.Name = "group2";
-            // 
             // buttonMoveMessage
             // 
             this.buttonMoveMessage.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -96,6 +82,20 @@
             this.buttonGoToFolder.OfficeImageId = "FileFind";
             this.buttonGoToFolder.ShowImage = true;
             this.buttonGoToFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonGoToFolder_Click);
+            // 
+            // tab2
+            // 
+            this.tab2.Groups.Add(this.group2);
+            this.tab2.Label = "WC Utilities";
+            this.tab2.Name = "tab2";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.buttonFinder);
+            this.group2.Items.Add(this.buttonSearchMain);
+            this.group2.Items.Add(this.buttonTabGoToFolder);
+            this.group2.Items.Add(this.buttonAbout);
+            this.group2.Name = "group2";
             // 
             // buttonFinder
             // 
