@@ -37,16 +37,17 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(93, 43);
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(34, 29);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(57, 13);
+            this.labelName.Size = new System.Drawing.Size(66, 13);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "labelName";
             // 
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(93, 66);
+            this.labelVersion.Location = new System.Drawing.Point(34, 52);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(64, 13);
             this.labelVersion.TabIndex = 1;
@@ -55,7 +56,7 @@
             // labelBuildDate
             // 
             this.labelBuildDate.AutoSize = true;
-            this.labelBuildDate.Location = new System.Drawing.Point(93, 89);
+            this.labelBuildDate.Location = new System.Drawing.Point(34, 75);
             this.labelBuildDate.Name = "labelBuildDate";
             this.labelBuildDate.Size = new System.Drawing.Size(75, 13);
             this.labelBuildDate.TabIndex = 2;
@@ -63,7 +64,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(348, 186);
+            this.buttonOK.Location = new System.Drawing.Point(218, 122);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 3;
@@ -76,7 +77,7 @@
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 221);
+            this.ClientSize = new System.Drawing.Size(305, 157);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelBuildDate);
             this.Controls.Add(this.labelVersion);

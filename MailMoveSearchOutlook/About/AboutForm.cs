@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Deployment.Application;
 
 namespace WCOutlookUtilities.About
 {
@@ -22,7 +23,8 @@ namespace WCOutlookUtilities.About
         private void AboutForm_Load(object sender, EventArgs e)
         {
             string buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             string productName = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
 
             labelBuildDate.Text = $"Build Date: {buildDate}";

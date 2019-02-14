@@ -34,10 +34,10 @@
     <PublishUrl>I:\Outlook-Utilities\</PublishUrl>
     <InstallUrl>http://apps.justinbraun.com/installers/outlook-utilities/</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.10.0.13</ApplicationVersion>
+    <ApplicationVersion>1.10.0.16</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateInterval>7</UpdateInterval>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>Outlook Utilities</ProductName>
     <PublisherName>Weekend Code</PublisherName>
@@ -47,11 +47,6 @@
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -131,6 +126,7 @@
     <Reference Include="Accessibility" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -293,7 +289,7 @@
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{A58A78EB-1C92-4DDD-80CF-E8BD872ABFC4}" />
         <Host Name="Outlook" GeneratedCodeNamespace="WCOutlookUtilities" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" PublishedHash="FFC7AB692E3A62656B422F2B6E7215E022238C77" />
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="FFC7AB692E3A62656B422F2B6E7215E022238C77" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>
