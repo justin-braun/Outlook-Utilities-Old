@@ -31,13 +31,13 @@
     <IsWebBootstrapper>True</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>I:\Outlook-Utilities\</PublishUrl>
+    <PublishUrl>S:\Apps\Outlook-Utilities\</PublishUrl>
     <InstallUrl>http://apps.justinbraun.com/installers/outlook-utilities/</InstallUrl>
     <TargetCulture>en</TargetCulture>
     <ApplicationVersion>1.10.0.16</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateInterval>0</UpdateInterval>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>Outlook Utilities</ProductName>
     <PublisherName>Weekend Code</PublisherName>

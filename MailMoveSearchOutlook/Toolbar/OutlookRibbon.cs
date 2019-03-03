@@ -48,5 +48,39 @@ namespace WCOutlookUtilities
             About.AboutForm aboutForm = new About.AboutForm();
             aboutForm.ShowDialog();
         }
+
+        private void searchMoveSplitButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            SearchForm sf = new SearchForm();
+            sf.ShowDialog();
+        }
+
+        private void buttonSearchMove_Click(object sender, RibbonControlEventArgs e)
+        {
+            SearchForm sf = new SearchForm();
+            sf.ShowDialog();
+        }
+
+        //public RibbonDropDownItem CreateRibbonDropDownItem()
+        //{
+        //    return this.Factory.CreateRibbonDropDownItem();
+        //}
+
+        //public RibbonMenu CreateRibbonMenu()
+        //{
+        //    return this.Factory.CreateRibbonMenu();
+        //}
+
+        //public RibbonButton CreateRibbonButton()
+        //{
+        //    RibbonButton button = this.Factory.CreateRibbonButton();
+        //    button.Click += new RibbonControlEventHandler(button_click);
+        //    return button;
+        //}
+
+        //private void button_click(object sender, RibbonControlEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

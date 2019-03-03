@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Microsoft.Office.Tools.Ribbon;
 
 namespace WCOutlookUtilities
 {
@@ -136,26 +137,6 @@ namespace WCOutlookUtilities
             Outlook.Selection sel = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
             Outlook.Selection conv = sel.GetSelection(Outlook.OlSelectionContents.olConversationHeaders) as Outlook.Selection;
 
-            //foreach (var item in sel)
-            //{
-            //    MessageBox.Show($"Type: {item.GetType().ToString()}");
-
-            //    if (item is Outlook.MailItem)
-            //    {
-            //        Outlook.MailItem mail = (Outlook.MailItem)item;
-
-            //        try
-            //        {
-            //            //mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
-            //            isMessage = true;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show(ex.Message);
-            //        }
-            //    }
-            //}
-
             foreach (Outlook.ConversationHeader cHeader in conv)
             {
                 Outlook.SimpleItems items = cHeader.GetItems();
@@ -181,7 +162,26 @@ namespace WCOutlookUtilities
             // Close form           
             this.Close();
 
+
+            // Add folder to recently used list
+
+            //Microsoft.Office.Tools.Ribbon.RibbonButton item = Globals.Factory.GetRibbonFactory().CreateRibbonButton();
+            //item.Label = listResults.GetItemText(listResults.SelectedItem);
+            //Globals.Ribbons.OutlookRibbon.recentFoldersMenu.Items.Add(item);
+            //item.Click += new RibbonControlEventHandler(item_Click);
         }
+
+        //void item_Click(object sender, RibbonControlEventArgs e)
+        //{
+        //    //Outlook.Application application = Globals.ThisAddIn.Application;
+        //    //Outlook.Inspector inspector = application.ActiveInspector();
+        //    //Outlook.MailItem myMailItem = (Outlook.MailItem)inspector.CurrentItem;
+        //    //RibbonButton myCheckBox = (RibbonButton)sender;
+        //    //myMailItem.Subject = "Following up on your order";
+        //    //myMailItem.Body = myMailItem.Body + "\n" + "* " + myCheckBox.Label;
+
+        //    MessageBox.Show("Test!");
+        //}
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
