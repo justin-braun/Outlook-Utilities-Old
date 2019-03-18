@@ -36,12 +36,13 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.tab2 = this.Factory.CreateRibbonTab();
-            this.group2 = this.Factory.CreateRibbonGroup();
             this.searchMoveSplitButton = this.Factory.CreateRibbonSplitButton();
             this.recentFoldersMenu = this.Factory.CreateRibbonMenu();
             this.buttonSearchMove = this.Factory.CreateRibbonButton();
             this.buttonGoToFolder = this.Factory.CreateRibbonButton();
+            this.buttonMergeFolders = this.Factory.CreateRibbonButton();
+            this.tab2 = this.Factory.CreateRibbonTab();
+            this.group2 = this.Factory.CreateRibbonGroup();
             this.buttonFinder = this.Factory.CreateRibbonButton();
             this.buttonSearchMain = this.Factory.CreateRibbonButton();
             this.buttonTabGoToFolder = this.Factory.CreateRibbonButton();
@@ -65,22 +66,9 @@
             this.group1.Items.Add(this.searchMoveSplitButton);
             this.group1.Items.Add(this.buttonSearchMove);
             this.group1.Items.Add(this.buttonGoToFolder);
+            this.group1.Items.Add(this.buttonMergeFolders);
             this.group1.Label = "WC Utilities";
             this.group1.Name = "group1";
-            // 
-            // tab2
-            // 
-            this.tab2.Groups.Add(this.group2);
-            this.tab2.Label = "WC Utilities";
-            this.tab2.Name = "tab2";
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.buttonFinder);
-            this.group2.Items.Add(this.buttonSearchMain);
-            this.group2.Items.Add(this.buttonTabGoToFolder);
-            this.group2.Items.Add(this.buttonAbout);
-            this.group2.Name = "group2";
             // 
             // searchMoveSplitButton
             // 
@@ -116,6 +104,29 @@
             this.buttonGoToFolder.OfficeImageId = "FileFind";
             this.buttonGoToFolder.ShowImage = true;
             this.buttonGoToFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonGoToFolder_Click);
+            // 
+            // buttonMergeFolders
+            // 
+            this.buttonMergeFolders.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonMergeFolders.Label = "Merge Folders";
+            this.buttonMergeFolders.Name = "buttonMergeFolders";
+            this.buttonMergeFolders.OfficeImageId = "FileFind";
+            this.buttonMergeFolders.ShowImage = true;
+            this.buttonMergeFolders.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMergeFolders_Click);
+            // 
+            // tab2
+            // 
+            this.tab2.Groups.Add(this.group2);
+            this.tab2.Label = "WC Utilities";
+            this.tab2.Name = "tab2";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.buttonFinder);
+            this.group2.Items.Add(this.buttonSearchMain);
+            this.group2.Items.Add(this.buttonTabGoToFolder);
+            this.group2.Items.Add(this.buttonAbout);
+            this.group2.Name = "group2";
             // 
             // buttonFinder
             // 
@@ -186,6 +197,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton searchMoveSplitButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu recentFoldersMenu;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSearchMove;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonMergeFolders;
     }
 
     partial class ThisRibbonCollection
