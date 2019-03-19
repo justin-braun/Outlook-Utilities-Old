@@ -67,6 +67,12 @@ namespace WCOutlookUtilities
             form.ShowDialog();
         }
 
+        private void buttonTabMergeFolders_Click(object sender, RibbonControlEventArgs e)
+        {
+            MergeFolders.MergeFoldersMain form = new MergeFolders.MergeFoldersMain();
+            form.ShowDialog();
+        }
+
         //public RibbonDropDownItem CreateRibbonDropDownItem()
         //{
         //    return this.Factory.CreateRibbonDropDownItem();

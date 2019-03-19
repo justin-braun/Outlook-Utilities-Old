@@ -42,7 +42,7 @@ namespace WCOutlookUtilities.MergeFolders
 
             // Instantiate helper and get Outlook folder list
             Helpers.OutlookHelpers oh = new Helpers.OutlookHelpers();
-            List<OutlookMailFolder> folderList = oh.GetFolderList(root);
+            List<OutlookMailFolder> folderList = oh.GetFolderList(root, checkBoxFoldersWithoutChildren.Checked, checkBoxFoldersWithItemsOnly.Checked);
 
             // Clear both list boxes
             listBoxMergeDest.Items.Clear();
@@ -59,7 +59,47 @@ namespace WCOutlookUtilities.MergeFolders
 
         private void buttonStartMerge_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"You have selected to merge {((OutlookMailFolder)listBoxMergeSource.SelectedItem).FolderName} ({((OutlookMailFolder)listBoxMergeSource.SelectedItem).FolderId} with {((OutlookMailFolder)listBoxMergeDest.SelectedItem).FolderName} ({((OutlookMailFolder)listBoxMergeDest.SelectedItem).FolderId}.");
+            //MessageBox.Show($"You have selected to merge {((OutlookMailFolder)listBoxMergeSource.SelectedItem).FolderName} ({((OutlookMailFolder)listBoxMergeSource.SelectedItem).FolderId} with {((OutlookMailFolder)listBoxMergeDest.SelectedItem).FolderName} ({((OutlookMailFolder)listBoxMergeDest.SelectedItem).FolderId}.");
+            if(((OutlookMailFolder)listBoxMergeSource.SelectedItem).FolderId == ((OutlookMailFolder)listBoxMergeDest.SelectedItem).FolderId)
+            {
+                MessageBox.Show("Source and destination folders are the same.  Select a different destination folder for the merge.");
+                return;
+            }
+
+            try
+            {
+                if (listBoxMergeSource.SelectedItems.Count > 0 && listBoxMergeDest.SelectedItems.Count > 0)
+                {
+                    foreach (var sourceFolder in listBoxMergeSource.SelectedItems)
+                    {
+                        // Move selected items from source folder to destination folder
+                        MergeItems(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)sourceFolder).FolderId) as Outlook.Folder,
+                                ((OutlookMailFolder)listBoxMergeDest.SelectedItem));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error moving mail items. {ex.Message}");
+            }
+
+        }
+
+        private void MergeItems(Outlook.Folder sourceFolder, OutlookMailFolder destFolder)
+        {
+            //MessageBox.Show($"{sourceFolder.Items.Count} items moving");
+            Helpers.OutlookHelpers.MoveFolderItems(sourceFolder, destFolder);
+        }
+
+        private void checkBoxFoldersWithItemsOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadFolders();
+        }
+
+        private void checkBoxFoldersWithoutChildren_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadFolders();
         }
     }
 }

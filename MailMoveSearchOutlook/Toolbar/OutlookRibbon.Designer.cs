@@ -47,6 +47,7 @@
             this.buttonSearchMain = this.Factory.CreateRibbonButton();
             this.buttonTabGoToFolder = this.Factory.CreateRibbonButton();
             this.buttonAbout = this.Factory.CreateRibbonButton();
+            this.buttonTabMergeFolders = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.tab2.SuspendLayout();
@@ -125,6 +126,7 @@
             this.group2.Items.Add(this.buttonFinder);
             this.group2.Items.Add(this.buttonSearchMain);
             this.group2.Items.Add(this.buttonTabGoToFolder);
+            this.group2.Items.Add(this.buttonTabMergeFolders);
             this.group2.Items.Add(this.buttonAbout);
             this.group2.Name = "group2";
             // 
@@ -164,6 +166,15 @@
             this.buttonAbout.ShowImage = true;
             this.buttonAbout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAbout_Click);
             // 
+            // buttonTabMergeFolders
+            // 
+            this.buttonTabMergeFolders.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonTabMergeFolders.Label = "Merge Folders";
+            this.buttonTabMergeFolders.Name = "buttonTabMergeFolders";
+            this.buttonTabMergeFolders.OfficeImageId = "FileFind";
+            this.buttonTabMergeFolders.ShowImage = true;
+            this.buttonTabMergeFolders.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonTabMergeFolders_Click);
+            // 
             // OutlookRibbon
             // 
             this.Name = "OutlookRibbon";
@@ -198,6 +209,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu recentFoldersMenu;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSearchMove;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonMergeFolders;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonTabMergeFolders;
     }
 
     partial class ThisRibbonCollection
