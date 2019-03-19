@@ -88,6 +88,7 @@ namespace WCOutlookUtilities.MergeFolders
                         }
                     }
 
+                    MessageBox.Show("Merge completed successfully.");
                 }
             }
             catch (Exception ex)
