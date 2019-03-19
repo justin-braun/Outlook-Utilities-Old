@@ -77,6 +77,17 @@ namespace WCOutlookUtilities.MergeFolders
                                 ((OutlookMailFolder)listBoxMergeDest.SelectedItem));
                     }
 
+                    // delete source folder if option is selected
+                    if(checkBoxRemoveSourceFolder.Checked)
+                    {
+                        foreach (var sourceFolder in listBoxMergeSource.SelectedItems)
+                        {
+                            // Move selected items from source folder to destination folder
+                            Outlook.Folder folder = Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)sourceFolder).FolderId) as Outlook.Folder;
+                            folder.Delete();
+                        }
+                    }
+
                 }
             }
             catch (Exception ex)
