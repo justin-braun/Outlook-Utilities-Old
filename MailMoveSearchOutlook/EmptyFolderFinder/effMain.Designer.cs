@@ -35,7 +35,6 @@
             this.buttonUnselectAll = new System.Windows.Forms.Button();
             this.checkIncludeInbox = new System.Windows.Forms.CheckBox();
             this.checkIncludeDeleted = new System.Windows.Forms.CheckBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -117,17 +116,6 @@
             this.checkIncludeDeleted.Text = "Deleted Items";
             this.checkIncludeDeleted.UseVisualStyleBackColor = true;
             // 
-            // buttonCancel
-            // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(419, 72);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 7;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -142,10 +130,8 @@
             this.AcceptButton = this.buttonFind;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(504, 298);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.checkIncludeDeleted);
             this.Controls.Add(this.checkIncludeInbox);
             this.Controls.Add(this.buttonUnselectAll);
@@ -175,7 +161,6 @@
         private System.Windows.Forms.Button buttonUnselectAll;
         private System.Windows.Forms.CheckBox checkIncludeInbox;
         private System.Windows.Forms.CheckBox checkIncludeDeleted;
-        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -111,7 +111,7 @@
             this.buttonMergeFolders.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.buttonMergeFolders.Label = "Merge Folders";
             this.buttonMergeFolders.Name = "buttonMergeFolders";
-            this.buttonMergeFolders.OfficeImageId = "FileFind";
+            this.buttonMergeFolders.OfficeImageId = "PrintPreviewShrinkOnePage";
             this.buttonMergeFolders.ShowImage = true;
             this.buttonMergeFolders.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMergeFolders_Click);
             // 
@@ -171,7 +171,7 @@
             this.buttonTabMergeFolders.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.buttonTabMergeFolders.Label = "Merge Folders";
             this.buttonTabMergeFolders.Name = "buttonTabMergeFolders";
-            this.buttonTabMergeFolders.OfficeImageId = "FileFind";
+            this.buttonTabMergeFolders.OfficeImageId = "PrintPreviewShrinkOnePage";
             this.buttonTabMergeFolders.ShowImage = true;
             this.buttonTabMergeFolders.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonTabMergeFolders_Click);
             // 

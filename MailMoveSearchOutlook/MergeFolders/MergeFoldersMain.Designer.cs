@@ -63,14 +63,14 @@
             this.buttonStartMerge.Name = "buttonStartMerge";
             this.buttonStartMerge.Size = new System.Drawing.Size(75, 23);
             this.buttonStartMerge.TabIndex = 2;
-            this.buttonStartMerge.Text = "Merge >>";
+            this.buttonStartMerge.Text = "Merge to >>";
             this.buttonStartMerge.UseVisualStyleBackColor = true;
             this.buttonStartMerge.Click += new System.EventHandler(this.buttonStartMerge_Click);
             // 
             // checkBoxRemoveSourceFolder
             // 
             this.checkBoxRemoveSourceFolder.AutoSize = true;
-            this.checkBoxRemoveSourceFolder.Location = new System.Drawing.Point(22, 335);
+            this.checkBoxRemoveSourceFolder.Location = new System.Drawing.Point(22, 381);
             this.checkBoxRemoveSourceFolder.Name = "checkBoxRemoveSourceFolder";
             this.checkBoxRemoveSourceFolder.Size = new System.Drawing.Size(186, 17);
             this.checkBoxRemoveSourceFolder.TabIndex = 3;
@@ -80,13 +80,11 @@
             // checkBoxFoldersWithItemsOnly
             // 
             this.checkBoxFoldersWithItemsOnly.AutoSize = true;
-            this.checkBoxFoldersWithItemsOnly.Checked = true;
-            this.checkBoxFoldersWithItemsOnly.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFoldersWithItemsOnly.Location = new System.Drawing.Point(22, 358);
+            this.checkBoxFoldersWithItemsOnly.Location = new System.Drawing.Point(22, 335);
             this.checkBoxFoldersWithItemsOnly.Name = "checkBoxFoldersWithItemsOnly";
-            this.checkBoxFoldersWithItemsOnly.Size = new System.Drawing.Size(195, 17);
+            this.checkBoxFoldersWithItemsOnly.Size = new System.Drawing.Size(230, 17);
             this.checkBoxFoldersWithItemsOnly.TabIndex = 4;
-            this.checkBoxFoldersWithItemsOnly.Text = "Only show folders that contain items";
+            this.checkBoxFoldersWithItemsOnly.Text = "Only show source folders that contain items";
             this.checkBoxFoldersWithItemsOnly.UseVisualStyleBackColor = true;
             this.checkBoxFoldersWithItemsOnly.CheckedChanged += new System.EventHandler(this.checkBoxFoldersWithItemsOnly_CheckedChanged);
             // 
@@ -95,11 +93,12 @@
             this.checkBoxFoldersWithoutChildren.AutoSize = true;
             this.checkBoxFoldersWithoutChildren.Checked = true;
             this.checkBoxFoldersWithoutChildren.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFoldersWithoutChildren.Location = new System.Drawing.Point(22, 381);
+            this.checkBoxFoldersWithoutChildren.Enabled = false;
+            this.checkBoxFoldersWithoutChildren.Location = new System.Drawing.Point(22, 358);
             this.checkBoxFoldersWithoutChildren.Name = "checkBoxFoldersWithoutChildren";
-            this.checkBoxFoldersWithoutChildren.Size = new System.Drawing.Size(186, 17);
+            this.checkBoxFoldersWithoutChildren.Size = new System.Drawing.Size(221, 17);
             this.checkBoxFoldersWithoutChildren.TabIndex = 5;
-            this.checkBoxFoldersWithoutChildren.Text = "Only show folders without children";
+            this.checkBoxFoldersWithoutChildren.Text = "Only show source folders without children";
             this.checkBoxFoldersWithoutChildren.UseVisualStyleBackColor = true;
             this.checkBoxFoldersWithoutChildren.CheckedChanged += new System.EventHandler(this.checkBoxFoldersWithoutChildren_CheckedChanged);
             // 

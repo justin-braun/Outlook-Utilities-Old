@@ -34,7 +34,7 @@
     <PublishUrl>S:\Apps\Outlook-Utilities\</PublishUrl>
     <InstallUrl>http://apps.justinbraun.com/installers/outlook-utilities/</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.10.0.17</ApplicationVersion>
+    <ApplicationVersion>1.10.0.18</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -273,6 +273,7 @@
     </Compile>
     <AppDesigner Include="Properties\" />
     <None Include="WCOutlookUtilities_1_TemporaryKey.pfx" />
+    <None Include="WCOutlookUtilities_2_TemporaryKey.pfx" />
     <None Include="WCOutlookUtilities_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup />
@@ -284,10 +285,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>WCOutlookUtilities_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>WCOutlookUtilities_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A0A4B0AD5986B11856AB595C45588DFF1CA8BC8B</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E4FFBD187EDF2F90C3633952D50AC1626BCC6152</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -302,6 +303,7 @@
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="FFC7AB692E3A62656B422F2B6E7215E022238C77" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
+      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

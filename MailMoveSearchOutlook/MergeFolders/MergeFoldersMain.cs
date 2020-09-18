@@ -42,18 +42,16 @@ namespace WCOutlookUtilities.MergeFolders
 
             // Instantiate helper and get Outlook folder list
             Helpers.OutlookHelpers oh = new Helpers.OutlookHelpers();
-            List<OutlookMailFolder> folderList = oh.GetFolderList(root, checkBoxFoldersWithoutChildren.Checked, checkBoxFoldersWithItemsOnly.Checked);
+            List<OutlookMailFolder> filteredFolderList = oh.GetFolderList(root, checkBoxFoldersWithoutChildren.Checked, checkBoxFoldersWithItemsOnly.Checked);
+            List<OutlookMailFolder> allFolderList = oh.GetFolderList(root, false, checkBoxFoldersWithItemsOnly.Checked);
 
             // Clear both list boxes
             listBoxMergeDest.Items.Clear();
             listBoxMergeSource.Items.Clear();
 
             // Fill list boxes with folder info
-            foreach(var item in folderList)
-            {
-                listBoxMergeSource.Items.Add(item);
-                listBoxMergeDest.Items.Add(item);
-            }
+            listBoxMergeSource.Items.AddRange(filteredFolderList.ToArray());
+            listBoxMergeDest.Items.AddRange(allFolderList.ToArray());
 
         }
 
@@ -89,6 +87,9 @@ namespace WCOutlookUtilities.MergeFolders
                     }
 
                     MessageBox.Show("Merge completed successfully.");
+
+                    // Refresh Folder List
+                    LoadFolders();
                 }
             }
             catch (Exception ex)

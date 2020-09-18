@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Microsoft.Office.Tools.Ribbon;
+using Microsoft.Office.Interop.Outlook;
 
 namespace WCOutlookUtilities
 {
@@ -135,25 +136,29 @@ namespace WCOutlookUtilities
         {
             // Check for mail thread
             Outlook.Selection sel = Globals.ThisAddIn.Application.ActiveExplorer().Selection;
-            Outlook.Selection conv = sel.GetSelection(Outlook.OlSelectionContents.olConversationHeaders) as Outlook.Selection;
-
-            foreach (Outlook.ConversationHeader cHeader in conv)
+            Outlook.Selection convHeaders = sel.GetSelection(Outlook.OlSelectionContents.olConversationHeaders) as Outlook.Selection;
+            
+            if(convHeaders.Count >= 1)
             {
-                Outlook.SimpleItems items = cHeader.GetItems();
-
-                for (int i = 1; i <= items.Count; i++)
+                foreach (Outlook.ConversationHeader cHeader in convHeaders)
                 {
-                    if (items[i] is Outlook.MailItem)
-                    {
-                        Outlook.MailItem mail = items[i] as Outlook.MailItem;
+                    Outlook.SimpleItems items = cHeader.GetItems();
 
-                        try
+                    foreach(object item in items)
+                    {
+                        if (item is Outlook.MailItem)
                         {
-                            mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
+                            Outlook.MailItem mail = item as Outlook.MailItem;
+                            
+                            try
+                            {
+                                mail.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
                         }
                     }
                 }
@@ -162,26 +167,37 @@ namespace WCOutlookUtilities
             // Close form           
             this.Close();
 
-
-            // Add folder to recently used list
-
-            //Microsoft.Office.Tools.Ribbon.RibbonButton item = Globals.Factory.GetRibbonFactory().CreateRibbonButton();
-            //item.Label = listResults.GetItemText(listResults.SelectedItem);
-            //Globals.Ribbons.OutlookRibbon.recentFoldersMenu.Items.Add(item);
-            //item.Click += new RibbonControlEventHandler(item_Click);
         }
 
-        //void item_Click(object sender, RibbonControlEventArgs e)
-        //{
-        //    //Outlook.Application application = Globals.ThisAddIn.Application;
-        //    //Outlook.Inspector inspector = application.ActiveInspector();
-        //    //Outlook.MailItem myMailItem = (Outlook.MailItem)inspector.CurrentItem;
-        //    //RibbonButton myCheckBox = (RibbonButton)sender;
-        //    //myMailItem.Subject = "Following up on your order";
-        //    //myMailItem.Body = myMailItem.Body + "\n" + "* " + myCheckBox.Label;
-
-        //    MessageBox.Show("Test!");
-        //}
+        private void EnumerateConversation(object item, Outlook.Conversation conversation)
+        {
+            Outlook.SimpleItems items =
+            conversation.GetChildren(item);
+            if (items.Count > 0)
+            {
+                foreach (object myItem in items)
+                {
+                    // In this example, only enumerate MailItem type. 
+                    // Other types such as PostItem or MeetingItem 
+                    // can appear in the conversation. 
+                    if (myItem is Outlook.MailItem)
+                    {
+                        Outlook.MailItem thisItem = myItem as MailItem;
+                        try
+                        {
+                            //thisItem.Move(Globals.ThisAddIn.Application.Session.GetFolderFromID(((OutlookMailFolder)listResults.SelectedItem).FolderId));
+                            MessageBox.Show(thisItem.SenderName);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    // Continue recursion. 
+                    EnumerateConversation(myItem, conversation);
+                }
+            }
+        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

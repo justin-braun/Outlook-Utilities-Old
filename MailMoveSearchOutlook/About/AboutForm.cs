@@ -22,12 +22,13 @@ namespace WCOutlookUtilities.About
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            string buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
+            //string buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             //string version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             string productName = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
 
-            labelBuildDate.Text = $"Build Date: {buildDate}";
+            //labelBuildDate.Text = $"Build Date: {buildDate}";
+            labelBuildDate.Visible = false;
             labelVersion.Text = $"Version: {version}";
             labelName.Text = productName;
         }
