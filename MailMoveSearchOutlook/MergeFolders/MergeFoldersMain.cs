@@ -13,6 +13,14 @@ namespace WCOutlookUtilities.MergeFolders
 {
     public partial class MergeFoldersMain : Form
     {
+        List<OutlookMailFolder> filteredFolderList = new List<OutlookMailFolder>();
+        List<OutlookMailFolder> allFolderList = new List<OutlookMailFolder>();
+
+        enum FolderSource
+        {
+            source, destination
+        }
+
         public MergeFoldersMain()
         {
             InitializeComponent();
@@ -41,15 +49,17 @@ namespace WCOutlookUtilities.MergeFolders
                 DefaultStore.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox) as Outlook.Folder;
 
             // Instantiate helper and get Outlook folder list
-            Helpers.OutlookHelpers oh = new Helpers.OutlookHelpers();
-            List<OutlookMailFolder> filteredFolderList = oh.GetFolderList(root, checkBoxFoldersWithoutChildren.Checked, checkBoxFoldersWithItemsOnly.Checked);
-            List<OutlookMailFolder> allFolderList = oh.GetFolderList(root, false, checkBoxFoldersWithItemsOnly.Checked);
+            Helpers.OutlookHelpers helper = new Helpers.OutlookHelpers();
+            filteredFolderList = helper.GetFolderList(root, checkBoxFoldersWithoutChildren.Checked, checkBoxFoldersWithItemsOnly.Checked);
+            allFolderList = helper.GetFolderList(root, false, checkBoxFoldersWithItemsOnly.Checked);
 
             // Clear both list boxes
             listBoxMergeDest.Items.Clear();
             listBoxMergeSource.Items.Clear();
 
             // Fill list boxes with folder info
+            //listBoxMergeSource.DataSource = filteredFolderList;
+            //listBoxMergeDest.DataSource = allFolderList;
             listBoxMergeSource.Items.AddRange(filteredFolderList.ToArray());
             listBoxMergeDest.Items.AddRange(allFolderList.ToArray());
 
@@ -113,6 +123,30 @@ namespace WCOutlookUtilities.MergeFolders
         private void checkBoxFoldersWithoutChildren_CheckedChanged(object sender, EventArgs e)
         {
             LoadFolders();
+        }
+
+        private void FindFolder(List<OutlookMailFolder> folders, FolderSource source, string searchString)
+        {
+            if(source == FolderSource.source)
+            {
+                listBoxMergeSource.Items.Clear();
+                listBoxMergeSource.Items.AddRange(folders.Where(i => i.FolderPath.ToLower().Contains(sourceFilterTextbox.Text.ToLower())).ToArray());
+            }
+            else if (source == FolderSource.destination)
+            {
+                listBoxMergeDest.Items.Clear();
+                listBoxMergeDest.Items.AddRange(folders.Where(i => i.FolderPath.ToLower().Contains(destFilterTextbox.Text.ToLower())).ToArray());
+            }
+        }
+
+        private void sourceFilterTextbox_TextChanged(object sender, EventArgs e)
+        {
+            FindFolder(filteredFolderList,FolderSource.source, sourceFilterTextbox.Text);
+        }
+
+        private void destFilterTextbox_TextChanged(object sender, EventArgs e)
+        {
+            FindFolder(allFolderList, FolderSource.destination, destFilterTextbox.Text);
         }
     }
 }
