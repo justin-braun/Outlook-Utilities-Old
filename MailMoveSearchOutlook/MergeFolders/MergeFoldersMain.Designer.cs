@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupOptions = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.listBoxMergeSource.FormattingEnabled = true;
             this.listBoxMergeSource.ItemHeight = 25;
             this.listBoxMergeSource.Location = new System.Drawing.Point(46, 145);
-            this.listBoxMergeSource.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listBoxMergeSource.Margin = new System.Windows.Forms.Padding(6);
             this.listBoxMergeSource.Name = "listBoxMergeSource";
             this.listBoxMergeSource.ScrollAlwaysVisible = true;
             this.listBoxMergeSource.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
@@ -60,7 +61,7 @@
             this.listBoxMergeDest.FormattingEnabled = true;
             this.listBoxMergeDest.ItemHeight = 25;
             this.listBoxMergeDest.Location = new System.Drawing.Point(900, 145);
-            this.listBoxMergeDest.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listBoxMergeDest.Margin = new System.Windows.Forms.Padding(6);
             this.listBoxMergeDest.Name = "listBoxMergeDest";
             this.listBoxMergeDest.ScrollAlwaysVisible = true;
             this.listBoxMergeDest.Size = new System.Drawing.Size(564, 554);
@@ -69,12 +70,12 @@
             // 
             // buttonStartMerge
             // 
-            this.buttonStartMerge.Location = new System.Drawing.Point(684, 409);
-            this.buttonStartMerge.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonStartMerge.Location = new System.Drawing.Point(1314, 725);
+            this.buttonStartMerge.Margin = new System.Windows.Forms.Padding(6);
             this.buttonStartMerge.Name = "buttonStartMerge";
             this.buttonStartMerge.Size = new System.Drawing.Size(150, 44);
             this.buttonStartMerge.TabIndex = 2;
-            this.buttonStartMerge.Text = "Merge to >>";
+            this.buttonStartMerge.Text = "&Merge";
             this.buttonStartMerge.UseVisualStyleBackColor = true;
             this.buttonStartMerge.Click += new System.EventHandler(this.buttonStartMerge_Click);
             // 
@@ -82,7 +83,7 @@
             // 
             this.checkBoxRemoveSourceFolder.AutoSize = true;
             this.checkBoxRemoveSourceFolder.Location = new System.Drawing.Point(39, 149);
-            this.checkBoxRemoveSourceFolder.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBoxRemoveSourceFolder.Margin = new System.Windows.Forms.Padding(6);
             this.checkBoxRemoveSourceFolder.Name = "checkBoxRemoveSourceFolder";
             this.checkBoxRemoveSourceFolder.Size = new System.Drawing.Size(369, 29);
             this.checkBoxRemoveSourceFolder.TabIndex = 3;
@@ -93,7 +94,7 @@
             // 
             this.checkBoxFoldersWithItemsOnly.AutoSize = true;
             this.checkBoxFoldersWithItemsOnly.Location = new System.Drawing.Point(39, 60);
-            this.checkBoxFoldersWithItemsOnly.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBoxFoldersWithItemsOnly.Margin = new System.Windows.Forms.Padding(6);
             this.checkBoxFoldersWithItemsOnly.Name = "checkBoxFoldersWithItemsOnly";
             this.checkBoxFoldersWithItemsOnly.Size = new System.Drawing.Size(506, 29);
             this.checkBoxFoldersWithItemsOnly.TabIndex = 4;
@@ -108,7 +109,7 @@
             this.checkBoxFoldersWithoutChildren.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxFoldersWithoutChildren.Enabled = false;
             this.checkBoxFoldersWithoutChildren.Location = new System.Drawing.Point(39, 104);
-            this.checkBoxFoldersWithoutChildren.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBoxFoldersWithoutChildren.Margin = new System.Windows.Forms.Padding(6);
             this.checkBoxFoldersWithoutChildren.Name = "checkBoxFoldersWithoutChildren";
             this.checkBoxFoldersWithoutChildren.Size = new System.Drawing.Size(442, 29);
             this.checkBoxFoldersWithoutChildren.TabIndex = 5;
@@ -135,7 +136,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 41);
+            this.label1.Location = new System.Drawing.Point(46, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 8;
@@ -144,7 +145,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(895, 41);
+            this.label2.Location = new System.Drawing.Point(895, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 25);
             this.label2.TabIndex = 9;
@@ -155,18 +156,29 @@
             this.groupOptions.Controls.Add(this.checkBoxFoldersWithoutChildren);
             this.groupOptions.Controls.Add(this.checkBoxRemoveSourceFolder);
             this.groupOptions.Controls.Add(this.checkBoxFoldersWithItemsOnly);
-            this.groupOptions.Location = new System.Drawing.Point(46, 770);
+            this.groupOptions.Location = new System.Drawing.Point(51, 834);
             this.groupOptions.Name = "groupOptions";
             this.groupOptions.Size = new System.Drawing.Size(1413, 232);
             this.groupOptions.TabIndex = 10;
             this.groupOptions.TabStop = false;
             this.groupOptions.Text = "Options";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(652, 410);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 37);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Merge To >>";
+            // 
             // MergeFoldersMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1514, 1058);
+            this.ClientSize = new System.Drawing.Size(1514, 1122);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupOptions);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -175,7 +187,8 @@
             this.Controls.Add(this.buttonStartMerge);
             this.Controls.Add(this.listBoxMergeDest);
             this.Controls.Add(this.listBoxMergeSource);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MergeFoldersMain";
@@ -205,5 +218,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupOptions;
+        private System.Windows.Forms.Label label3;
     }
 }

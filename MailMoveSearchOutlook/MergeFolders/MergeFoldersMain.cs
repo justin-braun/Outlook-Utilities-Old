@@ -100,6 +100,10 @@ namespace WCOutlookUtilities.MergeFolders
 
                     // Refresh Folder List
                     LoadFolders();
+
+                    // Clear filters
+                    sourceFilterTextbox.Text = "";
+                    destFilterTextbox.Text = "";
                 }
             }
             catch (Exception ex)
