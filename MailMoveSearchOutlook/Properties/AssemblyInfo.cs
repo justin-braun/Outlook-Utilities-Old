@@ -11,8 +11,8 @@ using System.Security;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Weekend Coder")]
 [assembly: AssemblyProduct("Weekend Coder Outlook Utilities")]
-[assembly: AssemblyCopyright("Copyright © 2018 Weekend Coder.  All rights reserved.")]
-[assembly: AssemblyTrademark("Copyright © 2018 Weekend Coder.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2018-2020 Weekend Coder.  All rights reserved.")]
+[assembly: AssemblyTrademark("Copyright © 2018-2020 Weekend Coder.  All rights reserved.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

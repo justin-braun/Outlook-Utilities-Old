@@ -287,7 +287,7 @@
     <ManifestKeyFile>WCOutlookUtilities_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7EDBE20383E089843C3A8E641535976D2B12B9A5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E4FFBD187EDF2F90C3633952D50AC1626BCC6152</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
