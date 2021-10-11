@@ -203,6 +203,7 @@
       <DependentUpon>GoToFolderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\OutlookHelpers.cs" />
+    <Compile Include="MailHeaders\MailHeadersUtil.cs" />
     <Compile Include="MergeFolders\MergeFoldersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,8 +273,6 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <None Include="WCOutlookUtilities_1_TemporaryKey.pfx" />
-    <None Include="WCOutlookUtilities_2_TemporaryKey.pfx" />
     <None Include="WCOutlookUtilities_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup />
@@ -285,10 +284,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>WCOutlookUtilities_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>WCOutlookUtilities_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E4FFBD187EDF2F90C3633952D50AC1626BCC6152</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7EDBE20383E089843C3A8E641535976D2B12B9A5</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -303,7 +302,7 @@
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="FFC7AB692E3A62656B422F2B6E7215E022238C77" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
